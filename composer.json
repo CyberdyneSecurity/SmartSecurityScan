@@ -1,0 +1,20 @@
+{
+    "name": "CyberdyneSecurity/SmartSecurityScan",
+    "type": "library",
+    "description": "Smart Security Scan PHP library for API communication",
+    "keywords": ["php","smart security","api","cyberdyne"],
+    "homepage": "https://github.com/CyberdyneSecurity/SmartSecurityScan",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Victor Angelier",
+            "email": "vangelier@hotmail.com",
+            "homepage": "https://www.thecodingcompany.se",
+            "role": "CO-worker"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "guzzlehttp/guzzle": "^6.2"
+    }
+}
