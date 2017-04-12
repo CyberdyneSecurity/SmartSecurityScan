@@ -71,7 +71,7 @@ class SecurityScan
      */
     private function valid_domain(){
         ///Not even a single . this will eliminate things like abcd, since http://abcd is reported valid
-        if(!substr_count($this->hostname, ".")){
+        if(substr_count($this->hostname, ".") <= 1){
             return false;
         }
         if(stripos($this->hostname, "://") === FALSE){
