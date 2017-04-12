@@ -123,6 +123,17 @@ class SmartSecurity extends Api
         }
         return false;
     }
+    /**
+     * Return all verification pending tasks
+     * @return boolean | array
+     */
+    public function completedTasks(){
+        $list = $this->post("task/list", array("status" => self::STATUS_COMPLETED));
+        if(!empty($list)){
+            return $list;
+        }
+        return false;
+    }
     
     /**
      * Returns the validation URL for a specific scan.
