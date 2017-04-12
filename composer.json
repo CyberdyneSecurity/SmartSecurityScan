@@ -1,5 +1,5 @@
 {
-    "name": "CyberdyneSecurity/SmartSecurityScan",
+    "name": "cyberdynesecurity/smartsecurityscan",
     "type": "library",
     "description": "Smart Security Scan PHP library for API communication",
     "keywords": ["php","smart security","api","cyberdyne"],
