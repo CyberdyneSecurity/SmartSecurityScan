@@ -70,15 +70,17 @@ class SecurityScan
      * @return boolean
      */
     private function valid_domain(){
+        $domain = $this->hostname;
         ///Not even a single . this will eliminate things like abcd, since http://abcd is reported valid
-        if(substr_count($this->hostname, ".") <= 1){
+        if(substr_count($domain, ".") < 1){
             return false;
+        }elseif(substr_count($domain, ".") === 1){
+            $domain = "www.{$domain}";
         }
-        if(stripos($this->hostname, "://") === FALSE){
-            $domain = "http://{$this->hostname}";
-        }else{
-            $domain = $this->hostname;
+        if(stripos($domain, "://") === FALSE){
+            $domain = "http://{$domain}";
         }
+        
         return (filter_var($domain, FILTER_VALIDATE_URL) !== FALSE ? TRUE : FALSE);
     }
     

@@ -65,11 +65,11 @@ class SmartSecurity extends Api
     
     /**
      * Returns all available packages
-     * @param boolean $custom_ony Only retrieve custom scan packages
+     * @param boolean $custom_only Only retrieve custom scan packages
      * @return boolean | array
      */
     public function getPackages($custom_only = true){
-        $list = $this->get("packages");
+        $list = $this->get("packages/{$custom_only}");
         if(isset($list["status"]) && !empty($list)){
             return $list["status"];
         }
