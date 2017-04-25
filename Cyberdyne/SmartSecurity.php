@@ -64,6 +64,18 @@ class SmartSecurity extends Api
     }
     
     /**
+     * Returns all re-occurring intervals. These can be used with creating scans.
+     * @return boolean
+     */
+    public function getReOccurringIntervals(){
+        $list = $this->get("reoccurring/list");
+        if(isset($list["status"]) && !empty($list)){
+            return $list["status"];
+        }
+        return false;
+    }
+    
+    /**
      * Returns all available packages
      * @param boolean $custom_only Only retrieve custom scan packages
      * @return boolean | array
@@ -145,6 +157,17 @@ class SmartSecurity extends Api
         $url = $this->get("task/validation/{$scan_id}");
         if(!empty($url)){
             return $url;
+        }
+        return false;
+    }
+    
+    /**
+     * Get the available credits
+     */
+    public function getCreditBalance(){
+        $return = $this->post("credits/available");
+        if(!empty($return) && $return["result"] >= 0){
+            return (int)$return["result"];
         }
         return false;
     }

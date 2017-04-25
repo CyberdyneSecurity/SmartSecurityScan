@@ -36,6 +36,12 @@ class SecurityScan
      * @var type 
      */
     private $package_id = 1;
+    
+    /**
+     * Default, no re-occurring
+     * @var type 
+     */
+    private $re_occurring_id = 1;
         
     /**
      * Construct new scan
@@ -60,6 +66,9 @@ class SecurityScan
             }
             if(isset($data["package_id"])){
                 $this->package_id = (int)$data["package_id"];
+            }
+            if(isset($data["reoccurring_id"])){
+                $this->package_id = (int)$data["reoccurring_id"];
             }
         }
     }
@@ -133,6 +142,16 @@ class SecurityScan
     }
     
     /**
+     * Set re-occurring interval
+     * @param int $reoccurring_id The re-occurring id retrieved from the ReoccurringList API
+     * @return \Cyberdyne\SecurityScan
+     */
+    public function reoccurring($reoccurring_id = 1){
+        $this->re_occurring_id = $reoccurring_id;
+        return $this;
+    }
+    
+    /**
      * Validate our input
      */
     private function validate(){
@@ -167,7 +186,8 @@ class SecurityScan
             "hostname"      => $this->hostname,
             "package_id"    => $this->package_id,
             "execute_time"  => $this->execute_time,
-            "execute_date"  => $this->execute_date
+            "execute_date"  => $this->execute_date,
+            "reoccurring_id"=> $this->re_occurring_id
         );
     }
     
